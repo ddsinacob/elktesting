@@ -20,7 +20,6 @@ Install Docker
 
   ::
 
-    yum-config-manager --add-repo https://docs.docker.com/engine/installation/linux/repo_files/oracle/docker-ol7.repo
     yum install -y docker-engine
 
 Docker Proxy
@@ -31,7 +30,6 @@ Docker Proxy
     Ubuntu 14 / Redhat
 
     cat /etc/default/docker
-    # If you need Docker to use an HTTP proxy, it can also be specified here.
     export http_proxy="http://proxy.example.com:80"
     export https_proxy="http://proxy.example.com:80"
 

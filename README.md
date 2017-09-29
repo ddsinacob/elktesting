@@ -64,6 +64,26 @@ Launch elasticsearch Container
 
     docker run -d -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch elasticsearch
 
+Verify Elastic Search is running
+--------------------------------
+
+  ::
+  
+    curl localhost:9200
+    {
+      "name" : "7mH_i9n",
+      "cluster_name" : "elasticsearch",
+      "cluster_uuid" : "Kj5Wj2WrQx64J197-vmW1w",
+      "version" : {
+        "number" : "5.5.2",
+        "build_hash" : "b2f0c09",
+        "build_date" : "2017-08-14T12:33:14.154Z",
+        "build_snapshot" : false,
+        "lucene_version" : "6.6.0"
+      },
+      "tagline" : "You Know, for Search"
+    }
+
 
 Pull kibana Image
 -----------------
@@ -78,6 +98,14 @@ Launch kiabana Container
   ::
 
     docker run -d -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch kibana
+    
+Kibana Dashboard
+----------------
+
+  ::
+  
+    http://localhost:5601/
+   
 
 Pull logstash Image
 -------------------
@@ -108,8 +136,8 @@ Launch logStash Container
       docker run -d -p 9500:9500 -h logstash1 --name logstash1 --link elasticsearch:elasticsearch -it -v "$(pwd)"/configuration_files:/configuration_files logstash -f /configuration_fileslogstash.conf
 
 
-Test
----
+Test/Send message to elasticsearch using logstash
+-------------------------------------------------
 
   ::
   
